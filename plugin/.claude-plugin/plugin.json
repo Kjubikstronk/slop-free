@@ -1,0 +1,10 @@
+{
+  "name": "merge-worthy",
+  "description": "Discipline for agent-assisted pull requests to open-source projects you don't maintain.",
+  "version": "0.1.0",
+  "author": { "name": "Kjubikstronk", "url": "https://github.com/Kjubikstronk" },
+  "homepage": "https://github.com/Kjubikstronk/merge-worthy",
+  "repository": "https://github.com/Kjubikstronk/merge-worthy",
+  "license": "MIT",
+  "keywords": ["open-source", "pull-requests", "contributing", "github"]
+}
