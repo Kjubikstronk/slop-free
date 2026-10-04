@@ -122,6 +122,8 @@ honestly is what keeps the door open.
 - Plain and specific: no headers on a few lines, one table at most, no filler.
   Cut the first draft by half.
 - A real-world motivation only if it's the user's real one.
+- Disclose AI use in the project's form, once. Leave out tool footers and
+  trailers the project didn't ask for: they read as advertising, not disclosure.
 - `references/templates.md` has a skeleton and an example.
 
 ## 5. After opening
@@ -131,8 +133,9 @@ honestly is what keeps the door open.
   Templates in `references/templates.md`.
 - Answer a wrong suggestion with a concrete counterexample, not an opinion.
 - Don't edit a reply someone has already answered. Put the change in the next one.
-- AI review bots may save a reply as a repo-wide rule credited to "maintainers". If
-  the user isn't one, say so in the thread.
+- If an AI review bot answers a reply by saving it as a repo-wide "learning"
+  credited to the maintainers, and the user isn't one, correct it in one line in
+  that thread. Only once it has happened: a pre-emptive note is noise.
 - **Red CI: is it ours or flaky?** Decide before touching code. Compare the same job
   on main, read the failing step, check the project's flaky-test reports. A
   first-time contributor's CI may wait on a maintainer, and forks can't re-run

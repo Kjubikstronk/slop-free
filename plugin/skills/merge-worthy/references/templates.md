@@ -102,7 +102,8 @@ change anything.
 
 ## Correcting an AI review bot
 
-When a bot saves your reply as a project rule credited to the maintainers:
+Only after a bot has replied that it saved your answer as a project rule credited to
+the maintainers. Don't add this to a reply in advance.
 
 ```
 @<bot> I'm a contributor, not a maintainer, so please don't record this as a
