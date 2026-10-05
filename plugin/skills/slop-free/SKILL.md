@@ -1,9 +1,9 @@
 ---
-name: merge-worthy
+name: slop-free
 description: Guides agent-assisted contributions to open-source repos the user doesn't maintain, from picking a bug to closing the PR, so the PR gets merged instead of closed as a duplicate, low quality or against policy. Use whenever the user wants to fix an issue in someone else's GitHub repo, asks whether a repo or issue is worth contributing to, wants to open, update or describe an upstream pull request, needs to answer a maintainer's or a review bot's comments (CodeRabbit, Copilot, Greptile, cubic), has a failing CI check or merge conflict on their PR, or asks to check their open PRs for replies. Also use for "first open source contribution" and "good first issue" requests. Not for repos the user maintains.
 ---
 
-# merge-worthy
+# slop-free
 
 A closed PR costs the contributor more than no PR: maintainers remember names, and
 an agent-assisted PR that wastes their time makes them less willing to take the next

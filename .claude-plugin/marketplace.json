@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "merge-worthy",
+  "name": "slop-free",
   "description": "Discipline for agent-assisted pull requests to open-source projects you don't maintain.",
   "owner": {
     "name": "Kjubikstronk",
@@ -8,7 +8,7 @@
   },
   "plugins": [
     {
-      "name": "merge-worthy",
+      "name": "slop-free",
       "description": "Rules and a read-only PR sweep for agent-assisted open-source contributions, learned from PRs that were closed: policy and duplicate checks, root-cause fixes, verification traps, review and CI handling, and closing etiquette.",
       "author": {
         "name": "Kjubikstronk",
@@ -16,7 +16,7 @@
       },
       "category": "development",
       "source": "./plugin",
-      "homepage": "https://github.com/Kjubikstronk/merge-worthy",
+      "homepage": "https://github.com/Kjubikstronk/slop-free",
       "license": "MIT",
       "keywords": ["open-source", "pull-requests", "contributing", "code-review", "github"]
     }

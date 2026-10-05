@@ -1,4 +1,4 @@
-# merge-worthy
+# slop-free
 
 A Claude Code skill for agent-assisted pull requests to open-source projects you
 don't maintain. It's the checklist I wish I'd had before my first one.
@@ -7,7 +7,7 @@ I spent two months fixing bugs in about 25 projects with an AI coding agent. Som
 PRs merged. Others were closed: as duplicates, as "low quality", for not following
 a policy I hadn't read, or because the fix only made a test pass. Every rule in
 here comes from one of those, and
-[`lessons.md`](plugin/skills/merge-worthy/references/lessons.md) has the incident
+[`lessons.md`](plugin/skills/slop-free/references/lessons.md) has the incident
 behind each one, anonymized.
 
 The short version:
@@ -21,11 +21,11 @@ The short version:
 ## Install
 
 ```bash
-/plugin marketplace add Kjubikstronk/merge-worthy
-/plugin install merge-worthy@merge-worthy
+/plugin marketplace add Kjubikstronk/slop-free
+/plugin install slop-free@slop-free
 ```
 
-Or copy `plugin/skills/merge-worthy` into `~/.claude/skills/`.
+Or copy `plugin/skills/slop-free` into `~/.claude/skills/`.
 
 ## What's inside
 
@@ -43,8 +43,8 @@ Both scripts need an authenticated [`gh`](https://cli.github.com/) and bash (Git
 Bash on Windows). They only read:
 
 ```bash
-bash plugin/skills/merge-worthy/scripts/preflight.sh owner/repo --issue 123 --file src/parse.js
-bash plugin/skills/merge-worthy/scripts/pr-sweep.sh 2026-10-01T00:00:00Z
+bash plugin/skills/slop-free/scripts/preflight.sh owner/repo --issue 123 --file src/parse.js
+bash plugin/skills/slop-free/scripts/pr-sweep.sh 2026-10-01T00:00:00Z
 ```
 
 ## Make it yours
