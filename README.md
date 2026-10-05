@@ -1,7 +1,8 @@
 # slop-free
 
-A Claude Code skill for agent-assisted pull requests to open-source projects you
-don't maintain. It's the checklist I wish I'd had before my first one.
+A Claude Code skill for AI-assisted pull requests to open-source projects you don't
+maintain, so what lands in a maintainer's queue is a fix and not slop. It's the
+checklist I wish I'd had before my first one.
 
 I spent two months fixing bugs in about 25 projects with an AI coding agent. Some
 PRs merged. Others were closed: as duplicates, as "low quality", for not following
