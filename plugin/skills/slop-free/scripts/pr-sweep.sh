@@ -10,7 +10,8 @@ set -uo pipefail
 SINCE="${1:-$(date -u -d '3 days ago' +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-3d +%Y-%m-%dT%H:%M:%SZ)}"
 ME="$(gh api user --jq .login)" || { echo "gh is not authenticated" >&2; exit 1; }
 LIST="$(mktemp)"
-trap 'rm -f "$LIST"' EXIT
+SEEN="$(mktemp)"
+trap 'rm -f "$LIST" "$SEEN"' EXIT
 
 search() {
   gh api -X GET search/issues -f q="type:pr author:$ME -user:$ME $1" -f per_page=100 --jq \
@@ -77,6 +78,36 @@ while read -r repo num state _; do
   if [ "$st" = "failure" ] || [ "$st" = "pending" ]; then ci="${ci:+$ci,}status:$st"; fi
   printf '  %-40s %-10s reviews=%-28s ci=%s\n' "$repo#$num" "$m" "${r:-none}" "${ci:-ok}"
 done < "$LIST"
+
+echo
+echo "## 7. Elsewhere: comments about your PRs on other threads"
+# Feedback on your PR often lands on a competing PR or on the issue instead, where
+# none of the sections above look. Check the threads that link to each open PR, and
+# anything that @-mentions you.
+while read -r repo num state _; do
+  [ "$state" = "open" ] || continue
+  gh api "repos/$repo/issues/$num/timeline?per_page=100" --jq '
+    .[] | select(.event == "cross-referenced") | .source.issue
+    | "\(.repository_url | split("/") | .[-2] + "/" + .[-1]) \(.number)"' 2>/dev/null |
+  sort -u | while read -r xrepo xnum; do
+    out=$(gh api "repos/$xrepo/issues/$xnum/comments?per_page=100&since=$SINCE" --jq '
+      .[] | select(.user.login != "'"$ME"'" and .user.type != "Bot")
+      | select(.body | test("#'"$num"'\\b|/pull/'"$num"'\\b|@'"$ME"'\\b"; "i"))
+      | "    \(.user.login) \(.created_at): \(.body | gsub("\n"; " ") | .[0:140])"' 2>/dev/null)
+    [ -n "$out" ] && { printf '  %s#%s, about %s#%s\n%s\n' "$xrepo" "$xnum" "$repo" "$num" "$out"; echo "$xrepo#$xnum" >> "$SEEN"; }
+  done
+done < "$LIST"
+gh api -X GET search/issues -f q="mentions:$ME updated:>=${SINCE%%T*}" -f per_page=50 --jq '
+  .items[] | "\(.repository_url | split("/") | .[-2] + "/" + .[-1]) \(.number)"' 2>/dev/null |
+while read -r xrepo xnum; do
+  grep -qxF "$xrepo#$xnum" "$SEEN" && continue
+  out=$(gh api "repos/$xrepo/issues/$xnum/comments?per_page=100&since=$SINCE" --jq '
+    .[] | select(.user.login != "'"$ME"'" and .user.type != "Bot")
+    | select(.body | test("@'"$ME"'\\b"; "i"))
+    | "    \(.user.login) \(.created_at): \(.body | gsub("\n"; " ") | .[0:140])"' 2>/dev/null)
+  [ -n "$out" ] && printf '  %s#%s mentions you\n%s\n' "$xrepo" "$xnum" "$out"
+done
+echo "  (no lines means nothing found)"
 
 echo
 echo "## Also check by hand"

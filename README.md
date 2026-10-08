@@ -38,7 +38,7 @@ Or copy `plugin/skills/slop-free` into `~/.claude/skills/`.
 | `references/windows.md` | Toolchain traps on Windows |
 | `references/lessons.md` | Every rule with the incident that taught it |
 | `scripts/preflight.sh` | Read-only checks before you start: is anyone merging outside work, what the policy files say, who else is fixing it |
-| `scripts/pr-sweep.sh` | Read-only sweep of your upstream PRs: inline threads, unresolved threads, closed PRs, label and review events, CI |
+| `scripts/pr-sweep.sh` | Read-only sweep of your upstream PRs: inline threads, unresolved threads, closed PRs, label and review events, CI, and comments about your PR posted on other threads |
 
 Both scripts need an authenticated [`gh`](https://cli.github.com/) and bash (Git
 Bash on Windows). They only read:

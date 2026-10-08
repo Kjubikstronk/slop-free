@@ -145,9 +145,10 @@ honestly is what keeps the door open.
 - **A competing PR:** one factual comment so the maintainer sees both. If theirs
   merges, close the user's with one line.
 - **Checking for replies:** run `scripts/pr-sweep.sh [SINCE]`. It covers inline
-  threads, unresolved threads, closed PRs, label/assign/review events, conflicts and
-  CI, which between them hide most missed replies. Notification email is worth a
-  look too; the web list truncates.
+  threads, unresolved threads, closed PRs, label/assign/review events, conflicts, CI,
+  and comments about the PR posted somewhere else: on a competing PR, on the issue,
+  or anywhere that @-mentions the user. Feedback often lands there. Notification
+  email is worth a look too; the web list truncates.
 
 ## 6. Closing
 

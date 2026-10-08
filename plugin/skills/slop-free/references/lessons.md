@@ -148,6 +148,8 @@ working notes and anonymized here. Each rule is followed by the incident that ta
   Taught by: a runtime PR's CI needed a collaborator label; nothing to do but wait.
 - Sweep every channel before saying "nothing new": inline threads, closed/merged PRs, timeline events, subscribed issues, and notification email (the web list truncates).
   Taught by: a maintainer's inline hint went unanswered, a close with an explanation was missed, and a competing PR announced on an issue was invisible.
+- Review of your PR can be posted on someone else's thread. Check PRs and issues that cross-reference yours.
+  Taught by: a detailed differential showing a regression in one PR was posted on the competing PR and went unanswered for three weeks; no per-PR check could see it.
 - Group inline review comments by `in_reply_to_id // id` and flag any chain whose last non-bot message isn't yours.
   Taught by: a later top-level review hid inline follow-ups, and one sat unanswered for two days.
 - Timeline `reviewed` events carry `submitted_at`, not `created_at`; label and assign events aren't comments.
